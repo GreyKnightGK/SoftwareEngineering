@@ -25,61 +25,46 @@
 - к.э.н., доцент Панов М.А.
 
 ## Самостоятельная работа №1 Установка
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_1.png)
-  
+
 ## Самостоятельная работа №2 Настройка
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_2.png)
-  
+
 ## Самостоятельная работа №3 Создание нового репозитория
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_3.png)
-  
+
 ## Самостоятельная работа №4 Подготовка файлов
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_4.png)
-  
+
 ## Самостоятельная работа №5 Фиксация изменений
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_5.png)
-  
+
 ## Самостоятельная работа №6 Подключение к удаленному репозиторию
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_6.png)
-  
+
 ## Самостоятельная работа №7 Ветвление
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_7.png)
-  
+
 ## Самостоятельная работа №8 Особенности применения «Фетч»
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_8.png)
-  
+
 ## Самостоятельная работа №9 Удаление файлов, веток, локальных и удалённых репозиториев
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_9.png)
-  
+
 ## Самостоятельная работа №10 Отслеживание изменений в коммитах
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_10.png)
 
 ## Самостоятельная работа №11 Возвращение файла к предыдущему (определенному) состоянию
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_11.png)
 
 ## Самостоятельная работа №12 Возвращение к предыдущему коммиту
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_12.png)
 
 ## Самостоятельная работа №13 Исправление коммита
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_13.png)
 
 ## Самостоятельная работа №14 Разрешение конфликтов при слиянии
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_14.png)
 
 ## Самостоятельная работа №15 Настройка .gitignore
-### Результат.
 ![](https://github.com/GreyKnightGK/SoftwareEngineering/blob/Тема_1/pic/Lab1_15.png)
