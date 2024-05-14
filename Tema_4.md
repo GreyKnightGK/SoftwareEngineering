@@ -23,7 +23,53 @@
 
 ### Код
 ```python
+# Импорт класса datetime из модуля datetime
+from datetime import datetime
+# Импорт функции sqrt из модуля math
+from math import sqrt
 
+# Объявление функции main
+def main(**kwargs):
+    """
+    Вычисляет длину гипотенуз прямоугольных треугольников.
+
+    Аргументы:
+        **kwargs (dict): Словарь, в котором ключ - наименование треугольника, а значения - список длин его катетов.
+
+    Возвращаемое значение:
+        Отсутствует. Результат выводится на экран.
+
+    Пример:
+        main(one=[10, 3], two=[5, 4], three=[15, 13])
+    """
+    # Перебор элементов словаря kwargs в цикле
+    # Значение элемента в итерации цикла передается в кортеж key
+    for key in kwargs.items():
+        # Вычисление гипотенузы по теореме Пифагора:
+        #   значения списка возводятся в квадрат, находится их сумма, а затем вычисляется квадратный корень от суммы;
+        #   получившееся значение сохраняется в переменную result.
+        result = sqrt(key[1][0] ** 2 + key[1][1] ** 2)
+        # Вывод значения переменной result на экран
+        print(result)
+
+# Проверка, что модуль выполняется как точка входа в программу (запускается напрямую, а не импортируется в другой модуль)
+# В случае импорта в другой модуль нижеприведенный код не будет выполнен
+if __name__ == '__main__':
+    # Сохранение в переменную start_time текущего времени (времени начала выполнения программы)
+    start_time = datetime.now()
+    # Вызов функции main с передачей пяти именованных аргументов
+    main(
+        one=[10, 3],
+        two=[5, 4],
+        three=[15, 13],
+        four=[93, 53],
+        five=[133, 15]
+    )
+    # Вычисление длительности выполнения программы как разницы между текущим временем и значением переменной start_time
+    # Полученное значение сохраняется в переменную time_costs
+    time_costs = datetime.now() - start_time
+    # Вывод на экран с использованием f-строки длительности выполнения программы
+    print(f"Время выполнения программы - {time_costs}")
 ```
 
 ### Результат
@@ -40,7 +86,21 @@
 
 ### Код
 ```python
+from random import randint
 
+def diceRoll():
+    result = randint(1, 6)
+    print(f'На кубике выпало {result}')
+
+    if result in (5, 6):
+        print('Вы победили')
+    elif result in (1, 2):
+        print('Вы проиграли')
+    else:
+        diceRoll()
+
+if __name__ == '__main__':
+    diceRoll()
 ```
 
 ### Результат
@@ -53,7 +113,12 @@
 
 ### Код
 ```python
+from datetime import datetime
+from time import sleep
 
+for a in range(5):
+    print(f'Сейчас {datetime.now().strftime('%H:%M:%S')}')
+    sleep(1)
 ```
 
 ### Результат
@@ -66,7 +131,14 @@
 
 ### Код
 ```python
+from random import randint
+from statistics import mean
 
+def calcAvg(*args):
+    print(f'Среднее арифметическое значений {args} равно {mean(args)}')
+
+if __name__ == "__main__":
+    calcAvg(*range(randint(0, 100)))
 ```
 
 ### Результат
@@ -80,7 +152,24 @@
 
 ### Код
 ```python
+# Lab4_5_1.py
+from math import sqrt
 
+def calculateTriangleArea(a, b, c):
+    # Полупериметр треугольника
+    p = 0.5 * (a + b + c)
+    # Площадь треугольника
+    S = sqrt(p * (p - a) * (p - b) * (p - c))
+    return S
+	
+# Lab4_5_2.py
+from Lab4_5_1 import calculateTriangleArea
+
+triangleSide = []
+for side in ('a', 'b', 'c'):
+    triangleSide.append(int(input(f'Введите длину стороны {side}: ')))
+
+print(f'Площадь треугольника равна {calculateTriangleArea(*triangleSide)}')
 ```
 
 ### Результат
