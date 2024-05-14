@@ -25,7 +25,11 @@
 
 ### Код
 ```python
-
+a = 1
+for a in range(7):
+    a *= 5
+a += 1
+print (a)
 ```
 
 ### Результат
@@ -41,7 +45,9 @@
 
 ### Код
 ```python
-
+text = 'Hello World'
+for symbol in text[::-1]:
+    print (symbol)
 ```
 
 ### Результат
@@ -61,7 +67,14 @@
 
 ### Код
 ```python
-
+try:
+    a = int(input('Введите целое число в диапазоне от 0 до 10 включительно: '))
+    if (a < 0 or a > 10):       print('Введенное число выходит за пределы разрешенного диапазона.')
+    elif (a >= 0 and a <= 3):   print('Число находится в диапазоне от 0 до 3 включительно.')
+    elif (a > 3 and a < 6):     print('Число больше 3 и меньше 6.')
+    elif (a >= 6 and a <= 10):  print('Число находится в диапазоне от 6 до 10 включительно.')
+except:
+    print('Введенное значение не является целым числом.')
 ```
 
 ### Результат
@@ -81,7 +94,14 @@
 
 ### Код
 ```python
+text = input('Введите предложение: ')
+lowerText = text.lower()
 
+print(f'Длина предложения: {len(text)} символов.')
+print(f'Предложение в нижнем регистре: {lowerText}')
+print(f'Количество латинских гласных (a, e, i, o, u) в предложении: {sum(1 for char in lowerText if char in 'aeiou')}')
+print(f'Предложение после замены "ugly" на "beauty": {text.replace('ugly', 'beauty')}')
+print(f'Предложение {'' if lowerText.startswith("the") else 'не '}начинается на "The" и {'' if lowerText.endswith("end") else 'не '}заканчивается на "end".')
 ```
 
 ### Результат
@@ -99,7 +119,19 @@
 
 ### Код
 ```python
-
+counter = 0
+values = [0, 2, 4, 6, 8, 10]
+while counter != 10:
+    string = 'hello'
+    while ' world' not in string:
+        memory = ' world'
+        if counter in values:
+            print(string + memory)
+            print(string)
+        string = string + ' world'
+        memory = string
+    counter += 1
+print(memory)
 ```
 
 ### Результат
