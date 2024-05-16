@@ -23,7 +23,10 @@
 
 ### Код
 ```python
-
+value = input('Введите последовательность чисел, разделенных пробелом: ')
+numberList = [x for x in value.split() if x.isnumeric()]
+print(numberList)
+print(tuple(numberList))
 ```
 
 ### Результат
@@ -46,7 +49,21 @@
 
 ### Код
 ```python
+def removeElementByValue(tpl, value):
+    if value in tpl:
+        lst = list(tpl)
+        lst.remove(value)
+        return tuple(lst)
+    else:
+        return tpl
 
+one = (1, 2, 3)
+two = (1, 2, 3, 1, 2, 3, 4, 5, 2, 3, 4, 2, 4, 2)
+three = (2, 4, 6, 6, 4, 2)
+
+print(removeElementByValue(one, 1))
+print(removeElementByValue(two, 3))
+print(removeElementByValue(three, 9))
 ```
 
 ### Результат
@@ -61,7 +78,22 @@
 
 ### Код
 ```python
+from random import randint
+from collections import Counter
 
+def getRandomNumericString():
+    string = str()
+    for value in range(25):
+        string += str(randint(0, 9))
+    return string
+
+def getNumericDict(str):
+    return dict(sorted(Counter(str).most_common(3)))
+
+string = getRandomNumericString()
+
+print(f'Случайная строка: {string}')
+print(f'Чаще всего в строке встречаются следущие числа: {getNumericDict(string)}')
 ```
 
 ### Результат
@@ -86,7 +118,24 @@
 
 ### Код
 ```python
+def search(tpl, value):
+    if (value in tpl):
+        firstIndex = tpl.index(value)
+        if (value in tpl[firstIndex + 1:]):
+            secondIndex = tpl.index(value, firstIndex+1)
+            return tpl[firstIndex:secondIndex + 1]
+        else:
+            return tpl[firstIndex:]
+    else:
+        return ()
 
+one = (1, 2, 3)
+two = (1, 8, 3, 4, 8, 8, 9, 2)
+three = (1, 2, 8, 5, 1, 2, 9)
+
+print(search(one, 8))
+print(search(two, 8))
+print(search(three, 8))
 ```
 
 ### Результат
@@ -96,9 +145,38 @@
 ### Задание
 Самостоятельно придумайте и решите задачу, в которой будут обязательно использоваться кортеж или список. Проведите минимум три теста для проверки работоспособности вашей задачи.
 
+Требуется написать программу, которая возвращает колоду карт для игры в:
+* покер (52 карты от 2 до туза)
+* дурак (36 карт от 6 до туза)
+* преферанс (32 карты от 7 до туза)
+* тысяча (24 карты от 9 до туза)
+
+Выбор игры осуществляет пользователь путем ввода наименования. Возвращаемый результат должен представлять из себя кортеж,
+сформированный из кортежа мастей карт и списка номиналов карт.
+
 ### Код
 ```python
+def filterCards (cards, value):
+    return [x for x in cards if not x.isnumeric() or int(x) >= value]
 
+cardGame = input('Колода для какой игры (покер, дурак, преферанс, тысяча) Вам требуется? ').lower()
+
+cardSuits = ('♠', '♥', '♦', '♣')
+cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'В', 'Д', 'К', 'Т']
+
+if (cardGame == 'покер'):
+    pass
+elif (cardGame == 'дурак'):
+    cards = filterCards(cards, 6)
+elif (cardGame == 'преферанс'):
+    cards = filterCards(cards, 7)
+elif (cardGame == 'тысяча'):
+    cards = filterCards(cards, 9)
+else:
+    print('Неизвестная игра')
+    exit()
+
+print(f'Колода для игры в {cardGame}: {tuple((card+suit) for suit in cardSuits for card in cards)}')
 ```
 
 ### Результат
