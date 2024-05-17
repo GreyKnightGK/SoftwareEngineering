@@ -58,7 +58,7 @@ Complex is better than complicated.
 Input file contains:\
 108 letters\
 20 words\
-4 lines\
+4 lines
 
 ### Код
 ```python
@@ -83,7 +83,7 @@ hello email python the exam wor is
 Предложение для проверки:\
 Hello, world! Python IS the programming language of thE future. My\
 EMAIL is....\
-PYTHON is awesome!!!!\
+PYTHON is awesome!!!!
 
 Ожидаемый результат:\
 \*\*\*\*\*, \*\*\*ld! \*\*\*\*\*\* \*\* \*\*\* programming language of \*\*\* future. My\
