@@ -48,17 +48,17 @@
 Имеется файл input.txt с текстом на латинице. Напишите программу, которая выводит следующую статистику по тексту: количество букв
 латинского алфавита; число слов; число строк.
 
-Текст в файле:
-Beautiful is better than ugly.
-Explicit is better than implicit.
-Simple is better than complex.
+Текст в файле:\
+Beautiful is better than ugly.\
+Explicit is better than implicit.\
+Simple is better than complex.\
 Complex is better than complicated.
 
-Ожидаемый результат:
-Input file contains:
-108 letters
-20 words
-4 lines
+Ожидаемый результат:\
+Input file contains:\
+108 letters\
+20 words\
+4 lines\
 
 ### Код
 ```python
@@ -77,17 +77,17 @@ Input file contains:
 даже в середине другого слова. Замена производится независимо от регистра: если файл input.txt содержит запрещенное слово exam, то слова exam,
 Exam, ExaM, EXAM и exAm должны быть заменены на \*\*\*\*.
 
-Запрещенные слова:
+Запрещенные слова:\
 hello email python the exam wor is
 
-Предложение для проверки:
-Hello, world! Python IS the programming language of thE future. My
-EMAIL is....
-PYTHON is awesome!!!!
+Предложение для проверки:\
+Hello, world! Python IS the programming language of thE future. My\
+EMAIL is....\
+PYTHON is awesome!!!!\
 
 Ожидаемый результат:
-\*\*\*\*\*, \*\*\*ld! \*\*\*\*\*\* \*\* \*\*\* programming language of \*\*\* future. My
-\*\*\*\*\* \*\*....
+\*\*\*\*\*, \*\*\*ld! \*\*\*\*\*\* \*\* \*\*\* programming language of \*\*\* future. My\
+\*\*\*\*\* \*\*....\
 \*\*\*\*\*\* \*\* awesome!!!!
 
 ### Код
