@@ -22,7 +22,18 @@
 
 ### Код
 ```python
+from collections import Counter
+from os.path import dirname
+from re import findall
 
+with open(dirname(__file__) + '\\Lab7_1.txt', 'r', encoding='utf-8') as file:
+    text = file.read()
+
+words = findall(r'\b\w+\b', text)
+popularWord = Counter(words).most_common(1)[0]
+
+print(f'Всего слов: {len(words)}')
+print(f'Самое популярное слово «{popularWord[0]}» встречается {popularWord[1]} раз')
 ```
 
 ### Результат
@@ -37,7 +48,31 @@
 
 ### Код
 ```python
+from os.path import dirname
 
+fileName = dirname(__file__) + '\\Lab7_2.txt'
+
+def addExpenses(name, sum):
+        with open(fileName, 'a', encoding='utf-8') as file:
+            file.write(f'{name}: {sum} ₽\n')
+        print('Расходы успешно внесены.')
+
+def readExpenses():
+    try:
+        with open(fileName, 'r', encoding='utf-8') as file:
+            print(file.read())
+    except FileNotFoundError:
+         print('Вы еще не вносили расходы.')
+
+action = input('Вы хотите добавить (+) или просмотреть (=) расходы? ')
+if (action == '+'):
+    expensesName = input('На что потратили? ')
+    expensesSum = input('Как много? ')
+    addExpenses(expensesName, expensesSum)
+elif (action == '='):
+    readExpenses()
+else:
+    print('Неизвестное действие')
 ```
 
 ### Результат
@@ -62,7 +97,20 @@ Input file contains:\
 
 ### Код
 ```python
+from os.path import dirname
+from re import findall
 
+with open(dirname(__file__) + '\\input.txt', 'r') as file:
+    text = file.readlines()
+
+linesCount, wordsCount, lettersCount = 0, 0, 0
+for line in text:
+    line = line.strip()
+    linesCount += 1
+    wordsCount += len(findall(r'\b\w+\b', line))
+    lettersCount += len(findall('[A-Za-z]', line))
+
+print(f'Input file contains:\n{lettersCount} letters\n{wordsCount} words\n{linesCount} lines')
 ```
 
 ### Результат
@@ -81,8 +129,7 @@ Exam, ExaM, EXAM и exAm должны быть заменены на \*\*\*\*.
 hello email python the exam wor is
 
 Предложение для проверки:\
-Hello, world! Python IS the programming language of thE future. My\
-EMAIL is....\
+Hello, world! Python IS the programming language of thE future. My EMAIL is....\
 PYTHON is awesome!!!!
 
 Ожидаемый результат:\
@@ -92,7 +139,17 @@ PYTHON is awesome!!!!
 
 ### Код
 ```python
+from os.path import dirname
+import re
 
+with open(dirname(__file__) + '\\input.txt', 'r') as file:
+    forbiddenWords = file.read().split(' ')
+
+text = 'Hello, world! Python IS the programming language of thE future. My EMAIL is....\nPYTHON is awesome!!!!'
+for word in forbiddenWords:
+    text = re.sub(word, '*' * len(word), text, flags=re.IGNORECASE)
+
+print(text)
 ```
 
 ### Результат
@@ -102,9 +159,24 @@ PYTHON is awesome!!!!
 ### Задание
 Самостоятельно придумайте и решите задачу, которая будет взаимодействовать с текстовым файлом.
 
+Дано X файлов, необходимо объединить их содержимое в один файл. В объединенном файле содержимое каждого добавленного файла должно начинаться с новой строки.\
+Вывести в терминал содержимое объединяемых файлов (минимум 3 файла) и объединенного файла.
+
 ### Код
 ```python
+from os.path import dirname
 
+dirName = dirname(__file__) + '\\'
+inputFiles = ('file1.txt', 'file2.txt', 'file3.txt')
+
+with open(dirName + 'output.txt', 'a+') as outputFile:
+    for file in inputFiles:
+        with open(dirName + file, 'r') as inputFile:
+            text = inputFile.read()
+        outputFile.write(text + '\n')
+        print(f'Текст файла {file}:\n{text}\n')
+    outputFile.seek(0)
+    print(f'Текст объединенного файла:\n{outputFile.read()}')
 ```
 
 ### Результат
