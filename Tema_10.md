@@ -31,7 +31,27 @@
 
 ### Код
 ```python
+from time import time
 
+def measure_time(func):
+    def wrapper(*args, **kwargs):
+        startTime = time()
+        result = func(*args, **kwargs)
+        endTime = time()
+        print(f'\nВремя выполнения {func.__name__}: {endTime - startTime} секунд')
+        return result
+    return wrapper
+
+@measure_time
+def fibonacci():
+    fib1 = fib2 = 1
+
+    for i in range(2, 200):
+        fib1, fib2 = fib2, fib1 + fib2
+        print(fib2, end='')
+
+if __name__ == '__main__':
+    fibonacci()
 ```
 
 ### Результат
@@ -48,7 +68,24 @@
 
 ### Код
 ```python
+from os.path import dirname
 
+def read_file(fileName):
+    with open(dirname(__file__) + f'\\{fileName}', 'r', encoding='utf-8') as file:
+        text = file.read().strip()
+
+    if (len(text) == 0):
+        raise ValueError()
+    else:
+        return text
+    
+files = ('Lab10_2_not_empty.txt', 'Lab10_2_empty.txt')
+
+for file in files:
+    try:
+        print(f'{file}: {read_file(file)}')
+    except ValueError:
+        print (f'{file}: Файл пустой')
 ```
 
 ### Результат
@@ -63,7 +100,14 @@
 
 ### Код
 ```python
+def addTwo(number):
+        return 2 + int(number)
 
+userInput = input('Введите целое число: ')
+try:
+     print(f'После добавления 2 получилось {addTwo(userInput)}')
+except ValueError:
+     print('Неподходящий тип данных. Ожидалось целое число.')
 ```
 
 ### Результат
@@ -78,7 +122,57 @@
 
 ### Код
 ```python
+# Импорт класса datetime из модуля datetime
+from datetime import datetime
+# Импорт функции dirname из модуля os.path
+from os.path import dirname
 
+# Объявление класса-декоратора
+class Loging:
+    def __init__(self, func):
+        """
+        Конструктор класса-декоратора.
+        """
+        self.func = func
+
+    def __call__(self, *args, **kwargs):
+        """
+        Метод-обертка для декорируемой функции.
+        """
+        # Выполняем функции и сохраняем результат в переменную
+        result = self.func(*args, **kwargs)
+        # Формируем строку для журналирования в формате (текущее_время     наименование_функции(аргументы_функции)     результат_функции)
+        logString = f'{datetime.now()}     {self.func.__name__}({str(', '.join(f'{element}' for element in args))}{', '.join(f'{key}={value}' for key, value in kwargs.items())})     {result}\n'
+        # Открываем файл журнала в режиме добавления информации
+        with open(dirname(__file__) + '\\Lab10_4.txt', 'a') as file:
+            # Записываем сформированную строку в журнал
+            file.write(logString)
+        # Возвращаем результат функции
+        return result
+
+# Декорирование функции
+@Loging
+def adding(a, b):
+    """
+    Вычисление суммы чисел a и b.
+    """
+    return a + b
+
+# Декорирование функции
+@Loging
+def subtracting(a, b):
+    """
+    Вычисление разности чисел a и b.
+    """
+    return a - b
+
+# Запрос ввода числа a и сохранение его в переменную
+a = int(input('Введите число a: '))
+# Запрос ввода числа b и сохранение его в переменную
+b = int(input('Введите число b: '))
+
+# Вывод в терминал результатов работы программы
+print(f'Сумма чисел {a} и {b} равна {adding(a, b)}, а разность равна {subtracting(a = a, b = b)}')
 ```
 
 ### Результат
@@ -93,7 +187,33 @@
 
 ### Код
 ```python
+import re
 
+class WrongSymbolsException(Exception):
+    def __init__ (self, message):
+        self.message = message
+
+def cyrillicString(string):
+    if (not re.match('^[А-Яа-яЁё]+$', string)):
+        raise WrongSymbolsException('Строка должна содержать только кириллические символы.')
+    return f'Строка содержит {len(string)} кириллических символов'
+
+def numberString(string):
+    if (not re.match('^[0-9]+$', string)):
+        raise WrongSymbolsException('Строка должна содержать только цифры.')
+    return f'Строка содержит {len(string)} цифр'
+
+cyrillicStr = input('Введите текст на кириллице: ')
+try:
+    print(cyrillicString(cyrillicStr))
+except WrongSymbolsException as e:
+    print(e.message)
+
+numberStr = input('Введите цифры: ')
+try:
+    print(numberString(numberStr))
+except WrongSymbolsException as e:
+    print(e.message)
 ```
 
 ### Результат
